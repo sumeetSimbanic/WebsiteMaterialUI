@@ -5,22 +5,22 @@ import {
   ListItemButton,
   IconButton,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-const sampleList = ["products", "service"];
-const DrawerComp = () => {
+const DrawerComp = ({ links }) => {
+  const [open, setOpen] = useState(false);
   return (
     <React.Fragment>
-      <Drawer open={true}>
+      <Drawer open={open} onClose={() => setOpen(false)}>
         <List>
-          {sampleList.map((item) => (
-            <ListItemButton>
+          {links.map((item, index) => (
+            <ListItemButton onClick={() => setOpen(false)} key={index}>
               <ListItemText>{item}</ListItemText>
             </ListItemButton>
           ))}
         </List>
       </Drawer>
-      <IconButton>
+      <IconButton onClick={() => setOpen(true)} sx={{ ml: "auto" }}>
         <MenuIcon color="white" />
       </IconButton>
     </React.Fragment>

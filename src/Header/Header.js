@@ -11,8 +11,11 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import GoogleIcon from "@mui/icons-material/Google";
 import ApiIcon from "@mui/icons-material/Api";
+import EmailIcon from "@mui/icons-material/Email";
 import DrawerComp from "./DrawerComp";
+import { CustomizedTypography } from "../Styles/styles";
 
 const links = ["Product", "Solution", "Pricing", "Enterprice"];
 
@@ -24,11 +27,15 @@ const Header = () => {
       <AppBar sx={{ bgcolor: "transparent", boxShadow: 0, position: "sticky" }}>
         {isMatch ? (
           <Box display="flex">
-            <ApiIcon sx={{ color: "black" }} />
-            <Typography variant="h6" fontFamily="fantasy">
+            <ApiIcon sx={{ color: "black", padding: 1 }} />
+            <Typography
+              sx={{ padding: 0.5, color: "black" }}
+              variant="h6"
+              fontFamily="fantasy"
+            >
               CodeEnv
             </Typography>
-            <DrawerComp />
+            <DrawerComp links={links} />
           </Box>
         ) : (
           <Toolbar>
@@ -62,14 +69,15 @@ const Header = () => {
             <source src="./video.mp4" type="video/mp4" />
           </video>
           <Box>
-            <Typography
+            <CustomizedTypography
+              fontSize={{ lg: 30, md: 24, sm: 18, xs: 14 }}
               margin="auto"
               variant="h4"
               color="black"
               textAlign={"center"}
             >
               Build Your Software Hassle Free And With Top Notch Quality
-            </Typography>
+            </CustomizedTypography>
           </Box>
           <Box
             width="100"
@@ -78,11 +86,16 @@ const Header = () => {
             margin="auto"
             marginTop={5}
           >
-            <Button variant="outlined" sx={{ mr: 3 }}>
-              SignUp With Email
+            <Button endIcon={<EmailIcon />} variant="outlined" sx={{ mr: 3 }}>
+              SignUp
             </Button>
-            <Button variant="contained" sx={{ mr: 3 }}>
-              SignUp With Google
+            <Button
+              endIcon={<GoogleIcon />}
+              color="error"
+              variant="contained"
+              sx={{ mr: 3 }}
+            >
+              SignUp
             </Button>
           </Box>
         </Box>
